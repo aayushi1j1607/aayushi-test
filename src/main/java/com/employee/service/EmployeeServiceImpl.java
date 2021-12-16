@@ -25,7 +25,7 @@ public class EmployeeServiceImpl implements  EmployeeService{
     @Override
     public List<Employee> addEmployees(List<Employee> employee)
     {
-        return employeeRepo.saveAll(employee) ;
+        return (List<Employee>) employeeRepo.saveAll(employee);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class EmployeeServiceImpl implements  EmployeeService{
     @Override
     public List<Employee> getAllEmployee()
     {
-        List<Employee> empList=employeeRepo.findAll();
+        List<Employee> empList= (List<Employee>) employeeRepo.findAll();
         if(!empList.isEmpty()){
             System.out.println("Getting data from Db :" + empList);
             return empList;

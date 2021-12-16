@@ -3,6 +3,7 @@ package com.employee.controller;
 import com.employee.model.Employee;
 import com.employee.service.EmployeeService;
 import com.employee.service.EmployeeServiceImpl;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +16,10 @@ public class EmployeeController {
 @Autowired
 EmployeeService service;
 
+    final static Logger logger = Logger.getLogger(EmployeeController.class);
     @GetMapping("/employees")
     public List<Employee> getAllEmployeeDetails(){
+        logger.debug("Get All employees");
         return service.getAllEmployee();
     }
 
@@ -27,6 +30,7 @@ EmployeeService service;
 
     @PostMapping(value="/adduser")
     public Employee addEmployee(@RequestBody Employee employee){
+        System.out.println("test case successfully executed: ");
         return service.addEmployee(employee);
     }
 
